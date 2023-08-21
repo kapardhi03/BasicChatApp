@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Come Chat With Me</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <input id="username" class="form-control" placeholder="Your Name" />
+            <select id="room" class="form-control">
+                <option value="room1">Room 1</option>
+                <option value="room2">Room 2</option>
+            </select>
+        </div>
+        <div class="chat-container">
+            <div id="messages" class="messages"></div>
+            <form id="form" class="form-inline">
+                <input id="input" class="form-control" autocomplete="off" />
+                <button class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
