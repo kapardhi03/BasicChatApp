@@ -15,7 +15,29 @@ io.on('connection', (socket) => {
     socket.on('chat message', (msgData) => {
         const msg = modifyMessage(msgData.message);
         const modifiedMsgData = { ...msgData, message: msg };
-        io.emit('chat message', modifiedMsgData);
+        
+
+        let mssg = msgData.message
+        if (mssg === '/clear') {
+            // Clear messages for this user
+            io.to(socket.id).emit('clear messages');
+        } else if (mssg === '/random') {
+            // Generate a random number between 1 and 100
+            const randomNumber = Math.floor(Math.random() * 100) + 1;
+            io.emit('chat message', {  message: `Random Number: ${randomNumber}` });
+        } else if (mssg === '/help') {
+            // Display available commands
+            const helpMessage = `
+                Available Commands:\n
+                /clear - Clear your messages\n
+                /random - Generate a random number\n
+                /help - Display available commands\n
+            `;
+            io.to(socket.id).emit('chat message', { ...msgData, message: helpMessage });
+        }
+        else{
+            io.emit('chat message', modifiedMsgData);
+        }
     });
 
     socket.on('disconnect', () => {

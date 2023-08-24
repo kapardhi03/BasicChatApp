@@ -24,16 +24,26 @@ $(document).ready(() => {
     form.submit((e) => {
         e.preventDefault();
         if (input.val()) {
-            const messageData = {
-                username: usernameInput.val(),
-                room: roomSelect.val(),
-                message: input.val()
-            };
-            socket.emit('chat message', messageData);
+            const messageText = input.val();
+            if (messageText === '/clear' || messageText === '/random' || messageText === '/help') {
+                // For special commands, just emit the message without the username
+                socket.emit('chat message', { message: messageText });
+            } else {
+                // For regular messages, emit the full message data
+                const messageData = {
+                    username: usernameInput.val(),
+                    room: roomSelect.val(),
+                    message: messageText
+                };
+                socket.emit('chat message', messageData);
+            }
             input.val('');
             isTyping = false;
             updateTypingIndicator();
         }
+    });
+    socket.on('clear messages', () => {
+        messages.empty(); // Clear messages for this user
     });
 
     socket.on('chat message', (data) => {
