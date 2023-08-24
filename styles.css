@@ -1,41 +1,82 @@
+/* Add these styles */
 body {
+    font-family: 'Roboto', sans-serif;
     background-color: #f2f2f2;
     margin: 0;
-    font-family: Arial, sans-serif;
 }
 
 .container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
 }
 
 .header {
     background-color: #075e54;
     color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
 }
 
 .chat-container {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #fff;
+    border-radius:10px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    padding: 15px;
     height: 400px;
     overflow-y: auto;
 }
 
 .messages {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .form-inline {
     display: flex;
     align-items: center;
+    margin-top: 15px;
+    position: fixed;
+    bottom: 100px;
+    width:40%;
+}
+
+.form-control {
+    flex: 1;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
 }
 
 .btn {
+    background-color: #075e54;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align:left;
+}
+
+.btn:hover {
+    background-color: #064c3d;
+}
+
+/* Add these styles for the typing indicator */
+#typingIndicator {
+    font-size: 14px;
+    color: #ddd;
 }
