@@ -28,19 +28,27 @@ server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 function modifyMessage(message) {
-    if (message.includes('react')) {
-        return message.replace('react', '⚛️'); // React emoji
-    } else if (message.includes('hey')) {
-        return message.replace('hey', '👋'); // Wave emoji
+
+
+
+
+    if (/\breact\b/i.test(message)) {
+
+        return message.replace('react' , '⚛️');
+    }
+    else if (message.includes('hey')) {
+        return message.replace('hey', '👋');
     } else if (message.includes('woah')) {
-        return message.replace('woah', '🤯'); // Wosh emoji
+        return message.replace('woah', '🤯');
     } else if (message.includes('lol')) {
-        return message.replace('lol', '😂'); // Laughing emoji
+        return message.replace('lol', '😂');
     } else if (message.includes('like')) {
-        return message.replace('like', '❤️'); // Love emoji
+        return message.replace('like', '❤️');
     } else if (message.includes('congratulations')) {
-        return message.replace('congratulations', '🎉'); // Party emoji
+        return message.replace('congratulations', '🎉');
     }
     return message;
+
+
 }
 
